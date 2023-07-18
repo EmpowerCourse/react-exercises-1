@@ -38,14 +38,15 @@ function Profile() {
 //   return null;
 // }
 
-
 function App() {
-  return <>
-    <Greeting />
-    <hr/>
-    <Profile />
-    <hr/>
-  </>;
+  return (
+    <>
+      <Greeting />
+      <hr />
+      <Profile />
+      <hr />
+    </>
+  );
 }
 
 export default App;
