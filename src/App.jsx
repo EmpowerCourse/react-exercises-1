@@ -4,28 +4,35 @@
  */
 
 function Greeting() {
-  return null;
+  return <h1>Hello, World!</h1>;
 }
 
 /**
  * Create a new React function component called Profile.
- * Inside the component, return a div that includes a h1 element for the user's name, and a p element for the user's bio.
+ * Inside the component, return a div that includes a h2 element for the user's name, and a p element for the user's bio.
  * The name should be "John Doe" and the bio should be "Web Developer from California".
  */
 
 function Profile() {
-  return null;
+  return (
+    <>
+      <Header />
+      <h2>John Doe</h2>
+      <p>Web Developer from California</p>
+      <Skills />
+    </>
+  );
 }
 
 /**
- * Create a new React function component called Header. This component should return a h1 element with the text "Welcome to My Profile!".
+ * Create a new React function component called Header. This component should return a h2 element with the text "Welcome to My Profile!".
  * In your Profile component, include the Header component at the top of your JSX.
  * Check that "Welcome to My Profile!" appears above the user's name and bio when you render the Profile component.
  */
 
-// function Header() {
-//   return null;
-// }
+function Header() {
+  return <h2>Welcome to My Profile!</h2>;
+}
 
 /**
  * Create a new React function component called Skills.
@@ -34,9 +41,15 @@ function Profile() {
  * Render the Profile component and verify that the skills list appears correctly.
  */
 
-// function Skills() {
-//   return null;
-// }
+function Skills() {
+  return (
+    <ul>
+      <li>Javascript</li>
+      <li>React</li>
+      <li>CSS</li>
+    </ul>
+  );
+}
 
 function App() {
   return (
