@@ -1,0 +1,9 @@
+.chicken-thingy {
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.chicken-thingy.delicious {
+    color: green;
+}

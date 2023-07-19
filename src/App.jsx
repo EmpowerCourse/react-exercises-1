@@ -1,10 +1,14 @@
+import _ from "lodash";
+import classnames from "classnames";
+import "./style.css";
+
 /**
  * Create a new React function component called Greeting.
  * Inside the component, return a h1 element that says "Hello, World!".
  */
 
-function Greeting() {
-  return <h1>Hello, World!</h1>;
+function Greeting({ children }) {
+  return <h1>{children}</h1>;
 }
 
 /**
@@ -13,12 +17,12 @@ function Greeting() {
  * The name should be "John Doe" and the bio should be "Web Developer from California".
  */
 
-function Profile() {
+function Profile({ name, bio }) {
   return (
     <>
-      <Header />
-      <h2>John Doe</h2>
-      <p>Web Developer from California</p>
+      <Header greeting="Yoooooooooooooooooooooooooooooooooooooooooooo" />
+      <h2>{name}</h2>
+      <p>{bio}</p>
       <Skills />
     </>
   );
@@ -30,8 +34,8 @@ function Profile() {
  * Check that "Welcome to My Profile!" appears above the user's name and bio when you render the Profile component.
  */
 
-function Header() {
-  return <h2>Welcome to My Profile!</h2>;
+function Header(props) {
+  return <h2>{props.greeting}</h2>;
 }
 
 /**
@@ -51,12 +55,52 @@ function Skills() {
   );
 }
 
+function ChickenThingy({ thingy }) {
+  const { name: somethingElse, isDelicious } = thingy;
+
+  // const name = thingy.name;
+  // const isDelicious = thingy.isDelicious;
+
+  // return (
+  //   <p style={{ color: isDelicious ? "green" : "red", fontSize: 40, fontWeight: "bold" }}>
+  //     {somethingElse} {isDelicious ? " is finger-lickin good" : " sux"}
+  //   </p>
+  // );
+
+  // return (
+  //   <p className={"chicken-thingy " + (isDelicious ? "delicious" : "")}>
+  //     {somethingElse} {isDelicious ? " is finger-lickin good" : " sux"}
+  //   </p>
+  // );
+
+  return (
+    <p className={classnames({ delicious: isDelicious, "chicken-thingy": true})}>
+      {somethingElse} {isDelicious ? " is finger-lickin good" : " sux"}
+    </p>
+  );
+}
+
 function App() {
+  const chickenThingies = [
+    { name: "Chicken wingies", isDelicious: true },
+    { name: "Chicken beakies", isDelicious: false },
+    { name: "Chicken feeties", isDelicious: false },
+    { name: "Chicken nuggies", isDelicious: true },
+    { name: "Chicken tendies", isDelicious: true },
+    { name: "Chicken fingies", isDelicious: true },
+  ];
+
   return (
     <>
-      <Greeting />
+      {_.map(chickenThingies, (c) => (
+        <ChickenThingy key={c.name} thingy={c} />
+      ))}
+      <Greeting><span>Hello Nicole</span></Greeting>
+      <Greeting><span>Hello Loc</span></Greeting>
       <hr />
-      <Profile />
+      {/* comment */}
+      <Profile name="Isabel" bio="Web developer from Winston-Salem." />
+      <Profile name="Brayan" bio="Also a web developer from Winston-Salem." />
       <hr />
     </>
   );
